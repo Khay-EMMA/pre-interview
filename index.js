@@ -11,3 +11,25 @@ let jobRequirements = {
   comapnyJ: ["paypalAccount"],
   comapnyK: [null]
 };
+
+let userSkills = "";
+let company = [];
+
+//this function takes in an argument which are the skills the user has
+function calculate(skill) {
+  userSkills = skill;
+  Object.keys(jobRequirements).forEach(key => {
+    if (jobRequirements[key].every(el => userSkills.includes(el))) {
+      company.push(key);
+    }
+  });
+
+  //checks if the user is qualifed to work for each company based on user skills and company requirements
+  for (var i = 0; i < company.length; i++) {
+    console.log(`user qualifies to work for ${company[i]}`);
+  }
+  console.log("user qualifies to work for companyK");
+  company = [];
+}
+
+calculate("bike, driversLicense");
